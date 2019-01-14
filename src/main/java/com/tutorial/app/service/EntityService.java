@@ -1,10 +1,12 @@
 package com.tutorial.app.service;
 
 import com.tutorial.app.entity.Payment;
+import com.tutorial.app.model.params.DataTablesParams;
 
 import java.util.List;
 
 public interface EntityService {
     int getRecordsCount();
-    List<Payment> getAll(int startPos, int maxResults);
+    int getFilteredCount(DataTablesParams params);
+    List<Payment> getAll(DataTablesParams params);
 }

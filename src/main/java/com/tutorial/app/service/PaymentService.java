@@ -2,6 +2,7 @@ package com.tutorial.app.service;
 
 import com.tutorial.app.dao.PaymentHome;
 import com.tutorial.app.entity.Payment;
+import com.tutorial.app.model.params.DataTablesParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +22,13 @@ public class PaymentService implements EntityService {
     }
 
     @Override
-    public List<Payment> getAll(int startPos, int maxResults){
-        return paymentDAO.getAll(startPos, maxResults);
+    public int getFilteredCount(DataTablesParams params) {
+        return paymentDAO.getFilteredCount(params);
+    }
+
+    @Override
+    public List<Payment> getAll(DataTablesParams params){
+        return paymentDAO.getAll(params);
     }
 
 }

@@ -15,9 +15,17 @@
     <script>
         $(document).ready(function() {
             $('#example').DataTable({
-                "processing": true,
                 "serverSide": true,
-                "ajax": "${pageContext.request.contextPath}/processing/payments",
+                "ajax": {
+                    url :"${pageContext.request.contextPath}/processing/payments",
+                    type: 'POST',
+                    data: function (data) {
+                             return JSON.stringify(data);
+                         },
+                     dataType: "json",
+                     processData: false,
+                     contentType: 'application/json;charset=UTF-8'
+                },
                 columns: [
                     { data: "paymentId" },
                     { data: "customer.firstName" },
